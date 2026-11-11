@@ -911,3 +911,12 @@ h1 .accent { display: block; }
   .as__teaser { inset-inline-end: 16px; bottom: calc(144px + env(safe-area-inset-bottom)); max-width: calc(100vw - 32px); }
   .as__panel { inset-inline: 8px; bottom: 8px; width: auto; height: min(82vh, 640px); border-radius: 22px; transform-origin: bottom center; }
 }
+
+/* Keep nav links on one line on medium screens */
+.nav__links a { white-space: nowrap; }
+@media (max-width: 1150px) and (min-width: 901px) {
+  .nav__links { gap: 18px; }
+  .nav__links a { font-size: .86rem; }
+  .nav__inner { gap: 18px; }
+  .nav__cta { padding: 11px 18px; }
+}
