@@ -32,9 +32,9 @@ export function HeroBg() {
       <svg className="hbg__lines" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
         <defs>
           <linearGradient id="hbgLine" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0" stopColor="#0e9f8f" stopOpacity="0" />
-            <stop offset="0.5" stopColor="#0e9f8f" stopOpacity="0.55" />
-            <stop offset="1" stopColor="#0e9f8f" stopOpacity="0" />
+            <stop offset="0" stopColor="#b8913f" stopOpacity="0" />
+            <stop offset="0.5" stopColor="#b8913f" stopOpacity="0.55" />
+            <stop offset="1" stopColor="#b8913f" stopOpacity="0" />
           </linearGradient>
         </defs>
         {LINES.map((d, i) => (

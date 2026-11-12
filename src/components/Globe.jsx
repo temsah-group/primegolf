@@ -11,8 +11,8 @@ const CITIES = [
   [24.7, 46.7], [19.1, 72.9], [1.35, 103.8], [39.9, 116.4], [6.5, 3.4], [-26.2, 28.0],
   [40.7, -74.0], [43.65, -79.4], [-33.9, 151.2],
 ];
-const NAVY = new THREE.Color('#0b2545');
-const TEAL = new THREE.Color('#0e9f8f');
+const NAVY = new THREE.Color('#4a1424');
+const TEAL = new THREE.Color('#b8913f');
 
 function toVec(lat, lon, r = R) {
   const phi = (90 - lat) * DEG;
@@ -79,7 +79,7 @@ export default function Globe() {
 
     // Base sphere with a soft rim shading so it reads as 3D on a light page
     const baseMat = track(new THREE.ShaderMaterial({
-      uniforms: { uCenter: { value: new THREE.Color('#f7fafc') }, uRim: { value: new THREE.Color('#d3e3ea') } },
+      uniforms: { uCenter: { value: new THREE.Color('#fcf8f7') }, uRim: { value: new THREE.Color('#ecdcdd') } },
       vertexShader: 'varying vec3 vN; void main(){ vN = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }',
       fragmentShader: 'uniform vec3 uCenter; uniform vec3 uRim; varying vec3 vN; void main(){ float f = pow(1. - max(dot(vN, vec3(0.,0.,1.)), 0.), 2.); gl_FragColor = vec4(mix(uCenter, uRim, f), 1.); }',
     }));
@@ -89,7 +89,7 @@ export default function Globe() {
     const haloMat = track(new THREE.ShaderMaterial({
       transparent: true, side: THREE.BackSide, depthWrite: false,
       vertexShader: 'varying vec3 vN; void main(){ vN = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }',
-      fragmentShader: 'varying vec3 vN; void main(){ float i = pow(0.66 - dot(vN, vec3(0.,0.,1.)), 3.2); gl_FragColor = vec4(0.055, 0.62, 0.56, clamp(i, 0., 1.) * 0.32); }',
+      fragmentShader: 'varying vec3 vN; void main(){ float i = pow(0.66 - dot(vN, vec3(0.,0.,1.)), 3.2); gl_FragColor = vec4(0.79, 0.63, 0.29, clamp(i, 0., 1.) * 0.32); }',
     }));
     tilt.add(new THREE.Mesh(track(new THREE.SphereGeometry(R * 1.12, 64, 64)), haloMat));
 
